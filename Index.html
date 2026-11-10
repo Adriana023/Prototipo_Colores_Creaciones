@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01 Inicio - Vajillas Artesanales</title>
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Hoja de estilos personalizada -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-white">
+
+    <!-- Barra de Navegación Superior -->
+    <header class="border-bottom py-2 bg-white sticky-top">
+        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+            <div class="d-flex align-items-center mb-2 mb-md-0">
+                <span class="fs-4 text-warning me-2">🏺</span>
+                <span class="fw-bold fs-5 text-dark">Vajillas y Chaskas</span>
+            </div>
+            <div class="input-group w-50 w-md-25 mb-2 mb-md-0" style="max-width: 300px;">
+                <input type="text" class="form-control form-control-sm" placeholder="Buscar vajillas o juegos...">
+            </div>
+            <div>
+                <a href="admin/login.html" class="btn btn-outline-dark btn-sm">Mi cuenta</a>
+            </div>
+        </div>
+        <div class="container mt-2">
+            <ul class="nav justify-content-center justify-content-lg-start border-top pt-2 flex-nowrap overflow-auto">
+                <li class="nav-item"><a class="nav-link active border-bottom border-warning border-3 pb-1" href="Index.html">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo por uso</a></li>
+                <li class="nav-item"><a class="nav-link" href="juegos.html">Juegos de vajilla</a></li>
+                <li class="nav-item"><a class="nav-link" href="detalle.html">Detalle</a></li>
+                <li class="nav-item"><a class="nav-link" href="personalizar.html">Personalizar</a></li>
+                <li class="nav-item"><a class="nav-link" href="resumen.html">Resumen</a></li>
+                <li class="nav-item"><a class="nav-link" href="envio.html">Envío</a></li>
+                <li class="nav-item"><a class="nav-link" href="materiales.html">Materiales</a></li>
+                <li class="nav-item"><a class="nav-link" href="talleres.html">Talleres</a></li>
+                <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Sección Hero Principal -->
+    <section class="container my-5">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <span class="text-muted small text-uppercase tracking-wide">HECHO A MANO EN PERÚ</span>
+                <h1 class="display-5 fw-bold text-dark mt-2 mb-3">Piezas hechas a mano. Momentos para compartir.</h1>
+                <p class="text-muted mb-4">Cada una de nuestras piezas cuenta una historia. Descubre colecciones únicas modeladas artesanalmente para realzar cada comida en tu hogar.</p>
+                <div class="d-flex gap-3">
+                    <a href="catalogo.html" class="btn btn-dark px-4 py-2">Ver catálogos &rarr;</a>
+                    <a href="talleres.html" class="btn btn-outline-secondary px-4 py-2">Ver talleres &darr;</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="position-relative">
+                    <img src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=800&q=80" alt="Mesa servida con vajilla artesanal" class="img-fluid rounded shadow-sm w-100 object-fit-cover" style="height: 380px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Barra de Enlaces Rápidos Naranja -->
+    <section class="bg-custom-orange py-3 text-white">
+        <div class="container">
+            <div class="row text-center fw-semibold">
+                <div class="col-md-3 border-end border-light py-1"><a href="catalogo.html" class="text-white text-decoration-none">Catálogo por uso</a></div>
+                <div class="col-md-3 border-end border-light py-1"><a href="juegos.html" class="text-white text-decoration-none">Juegos para mesa</a></div>
+                <div class="col-md-3 border-end border-light py-1"><a href="materiales.html" class="text-white text-decoration-none">Materiales y esmaltes</a></div>
+                <div class="col-md-3 py-1"><a href="talleres.html" class="text-white text-decoration-none">Talleres de cerámica</a></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Productos Dinámicos desde el Admin -->
+    <section class="container my-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3 class="fw-bold text-dark mb-0">Productos Destacados de la Tienda</h3>
+            <a href="catalogo.html" class="text-decoration-none text-muted small">Ver todo el catálogo &rarr;</a>
+        </div>
+        <!-- Contenedor donde se insertan automáticamente los productos del Admin -->
+        <div class="row g-4" id="gridProductosIndex">
+            <!-- Cargados por JavaScript -->
+        </div>
+    </section>
+
+    <!-- Sección Historia / Banner secundario -->
+    <section class="container my-5">
+        <div class="row align-items-center bg-light p-4 rounded shadow-sm">
+            <div class="col-md-5">
+                <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&w=600&q=80" class="img-fluid rounded" alt="Manos moldeando arcilla">
+            </div>
+            <div class="col-md-7 ps-md-4">
+                <span class="text-muted small">EL ARTE DE LO HECHO A MANO</span>
+                <h3 class="fw-bold mt-1 mb-3">Una historia que también se cuenta en la mesa.</h3>
+                <p class="text-muted small">Creamos colecciones limitadas honrando las técnicas ancestrales de la cerámica peruana. Cada textura busca conectar a las personas con lo natural y lo genuino de compartir los alimentos.</p>
+                <div class="row mt-4">
+                    <div class="col-4">
+                        <h6 class="fw-bold text-dark">Arcilla local</h6>
+                        <p class="text-muted small mb-0">Extraída de manera sostenible.</p>
+                    </div>
+                    <div class="col-4">
+                        <h6 class="fw-bold text-dark">Esmaltes seguros</h6>
+                        <p class="text-muted small mb-0">Libres de plomo y tóxicos.</p>
+                    </div>
+                    <div class="col-4">
+                        <h6 class="fw-bold text-dark">Diseño único</h6>
+                        <p class="text-muted small mb-0">Piezas hechas una a una.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner Amarillo Inferior -->
+    <section class="container my-5">
+        <div class="bg-custom-yellow p-4 rounded d-flex flex-column flex-md-row justify-content-between align-items-center shadow-sm">
+            <div class="mb-3 mb-md-0">
+                <h4 class="fw-bold text-dark mb-1">Conoce el proceso. Vive la cerámica.</h4>
+                <p class="text-dark mb-0 small">Visita nuestro taller principal o agenda una experiencia guiada.</p>
+            </div>
+            <a href="contacto.html" class="btn btn-dark px-4 py-2 font-weight-bold">Contáctanos &rarr;</a>
+        </div>
+    </section>
+
+    <!-- Pie de Página (Footer azul oscuro) -->
+    <footer class="bg-custom-blue text-white py-5 mt-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h5 class="fw-bold mb-3">🏺 Vajillas y Chaskas</h5>
+                    <p class="text-white-50 small">Piezas de cerámica utilitaria y decorativa hechas a mano con dedicación en cada detalle para tu hogar.</p>
+                    <p class="text-white-50 small mb-0">&copy; 2026 Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-2">
+                    <h6 class="fw-bold text-warning mb-3">Navegación</h6>
+                    <ul class="list-unstyled small">
+                        <li><a href="Index.html" class="text-white-50 text-decoration-none">Inicio</a></li>
+                        <li><a href="catalogo.html" class="text-white-50 text-decoration-none">Catálogo</a></li>
+                        <li><a href="personalizar.html" class="text-white-50 text-decoration-none">Personalizar</a></li>
+                        <li><a href="talleres.html" class="text-white-50 text-decoration-none">Talleres</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="fw-bold text-warning mb-3">Contacto</h6>
+                    <ul class="list-unstyled small text-white-50">
+                        <li>📍 Av. Artesanos 450, Lima</li>
+                        <li>📞 +51 987 654 321</li>
+                        <li>✉️ hola@vajillaychaskas.com</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="fw-bold text-warning mb-3">Administración</h6>
+                    <p class="text-white-50 small">¿Eres parte del equipo? Ingresa al panel de control con control de roles.</p>
+                    <a href="admin/login.html" class="btn btn-outline-warning btn-sm">Acceso Admin</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Tu script centralizado de lógica general -->
+    <script src="js/main.js"></script>
+
+    <!-- Inicialización de productos para la página de inicio -->
+    <script>
+        window.onload = function() {
+            cargarProductosTienda('gridProductosIndex');
+        };
+    </script>
+</body>
+</html>

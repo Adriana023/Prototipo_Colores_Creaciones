@@ -1,0 +1,101 @@
+/* ==========================================
+   ESTILOS GLOBALES - COLORES Y CREACIONES
+   ========================================== */
+
+/* Colores corporativos principales */
+:root {
+    --navy-blue: #0d233a;
+    --dark-navy: #0b1f33;
+    --orange: #e06d29;
+    --orange-hover: #c85a1b;
+    --yellow: #f3b91a;
+    --light-yellow: #fcf4e4;
+}
+
+/* Estilos generales del cuerpo */
+body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #333;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+/* Clases de utilidad para colores de fondo y texto */
+.bg-custom-navy { background-color: var(--dark-navy) !important; }
+.bg-custom-blue { background-color: var(--navy-blue) !important; }
+.bg-custom-orange { background-color: var(--orange) !important; }
+.bg-custom-yellow { background-color: var(--yellow) !important; }
+
+.text-custom-orange { color: var(--orange) !important; }
+.text-custom-blue { color: var(--navy-blue) !important; }
+
+/* Enlaces de navegación superior y menús */
+.nav-link {
+    color: #555 !important;
+    font-size: 0.95rem;
+    transition: color 0.2s ease-in-out;
+}
+
+.nav-link:hover, 
+.nav-link.active {
+    color: var(--navy-blue) !important;
+    font-weight: bold;
+}
+
+/* Botones personalizados */
+.btn-custom-orange {
+    background-color: var(--orange);
+    color: white;
+    border: none;
+}
+
+.btn-custom-orange:hover {
+    background-color: var(--orange-hover);
+    color: white;
+}
+
+.btn-custom-blue {
+    background-color: var(--navy-blue);
+    color: white;
+    border: none;
+}
+
+.btn-custom-blue:hover {
+    background-color: #081625;
+    color: white;
+}
+
+/* Componentes de pasos de compra y tarjetas interactivas */
+.step-pill {
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+}
+
+.shipping-card {
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.shipping-card.active {
+    border-color: var(--yellow) !important;
+    background-color: var(--light-yellow);
+}
+
+.payment-method-card {
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    border: 2px solid #dee2e6;
+}
+
+.payment-method-card.active {
+    border-color: var(--orange) !important;
+    background-color: #fff8f3;
+}
+
+/* Tamaños de texto extra pequeños para footers y topbars */
+.extra-small {
+    font-size: 0.75rem;
+}

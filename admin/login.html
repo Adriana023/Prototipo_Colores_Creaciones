@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Registro - Administración Vajillas y Chaskas</title>
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #0d233a; }
+        .login-card { max-width: 420px; margin-top: 5vh; border-radius: 12px; }
+        .btn-custom-orange { background-color: #e06d29; color: white; border: none; }
+        .btn-custom-orange:hover { background-color: #c85a1b; color: white; }
+        .nav-tabs .nav-link { color: #555; font-weight: 500; }
+        .nav-tabs .nav-link.active { color: #0d233a; font-weight: bold; }
+    </style>
+</head>
+<body class="d-flex align-items-center justify-content-center vh-100">
+
+    <div class="card login-card shadow p-4 w-100 bg-white">
+        <!-- Logo y Título -->
+        <div class="text-center mb-3">
+            <span class="fs-1">🏺</span>
+            <h4 class="fw-bold text-dark mt-1">Panel de Control</h4>
+            <p class="text-muted small mb-0">Vajillas y Chaskas - Acceso por Roles</p>
+        </div>
+
+        <!-- Pestañas para alternar entre Ingresar y Registrarse -->
+        <ul class="nav nav-tabs nav-fill mb-3" id="authTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login-pane" type="button" role="tab">Ingresar</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register-pane" type="button" role="tab">Registrarse</button>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="authTabsContent">
+            <!-- Pestaña 1: Formulario de Login -->
+            <div class="tab-pane fade show active" id="login-pane" role="tabpanel">
+                <form id="loginForm">
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Correo electrónico</label>
+                        <input type="email" id="email" class="form-control" placeholder="admin@vajillas.com" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Contraseña</label>
+                        <input type="password" id="password" class="form-control" placeholder="••••••••" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Simular Rol de Acceso</label>
+                        <select id="roleSelect" class="form-select">
+                            <option value="Administrador">Administrador (Acceso Total)</option>
+                            <option value="Editor">Editor (Gestión de Contenido)</option>
+                            <option value="Vendedor">Vendedor (Gestión de Pedidos)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-custom-orange w-100 fw-bold py-2">Ingresar al sistema &rarr;</button>
+                </form>
+            </div>
+
+            <!-- Pestaña 2: Formulario de Registro -->
+            <div class="tab-pane fade" id="register-pane" role="tabpanel">
+                <form id="registerForm">
+                    <div class="mb-2">
+                        <label class="form-label small fw-bold">Nombre Completo</label>
+                        <input type="text" id="regName" class="form-control" placeholder="Ej. Juan Pérez" required>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label small fw-bold">Correo electrónico</label>
+                        <input type="email" id="regEmail" class="form-control" placeholder="nuevo@vajillas.com" required>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label small fw-bold">Contraseña</label>
+                        <input type="password" id="regPassword" class="form-control" placeholder="••••••••" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Asignar Rol</label>
+                        <select id="regRole" class="form-select">
+                            <option value="Vendedor">Vendedor</option>
+                            <option value="Editor">Editor</option>
+                            <option value="Administrador">Administrador</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100 fw-bold py-2">Crear Cuenta &rarr;</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="text-center mt-3 pt-2 border-top">
+            <a href="../Index.html" class="text-decoration-none small text-muted">&larr; Volver a la tienda pública</a>
+        </div>
+    </div>
+
+    <!-- Script de Bootstrap 5 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Script de Lógica de Inicio de Sesión y Registro Sincronizado con LocalStorage -->
+    <script>
+        // Inicializar usuarios por defecto en localStorage si no existen
+        const usuariosIniciales = [
+            { nombre: "Administrador Principal", correo: "admin@vajillas.com", rol: "Administrador" },
+            { nombre: "Editor de Contenido", correo: "editor@vajillas.com", rol: "Editor" },
+            { nombre: "Vendedor General", correo: "vendedor@vajillas.com", rol: "Vendedor" }
+        ];
+
+        if (!localStorage.getItem('listaUsuariosAdmin')) {
+            localStorage.setItem('listaUsuariosAdmin', JSON.stringify(usuariosIniciales));
+        }
+
+        // Manejo del Login
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value.trim();
+            const role = document.getElementById('roleSelect').value;
+
+            // Guardar sesión activa en el almacenamiento del navegador
+            localStorage.setItem('userSession', JSON.stringify({
+                email: email,
+                role: role,
+                loginTime: new Date().toISOString()
+            }));
+
+            // Redirigir directamente al panel de control (dashboard.html)
+            window.location.href = 'dashboard.html';
+        });
+
+        // Manejo del Registro
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nombre = document.getElementById('regName').value.trim();
+            const correo = document.getElementById('regEmail').value.trim();
+            const rol = document.getElementById('regRole').value;
+
+            // Obtener la lista actual de usuarios del admin
+            let listaUsuarios = JSON.parse(localStorage.getItem('listaUsuariosAdmin')) || [];
+
+            // Verificar si el correo ya existe
+            const existe = listaUsuarios.some(u => u.correo === correo);
+            if (existe) {
+                alert('Ya existe una cuenta registrada con este correo electrónico.');
+                return;
+            }
+
+            // Crear el nuevo objeto de usuario compatible con la tabla de usuarios.html
+            const nuevoUsuario = {
+                nombre: nombre,
+                correo: correo,
+                rol: rol
+            };
+
+            // Guardar en la lista global de administración
+            listaUsuarios.push(nuevoUsuario);
+            localStorage.setItem('listaUsuariosAdmin', JSON.stringify(listaUsuarios));
+
+            // Guardar sesión activa inmediata
+            localStorage.setItem('userSession', JSON.stringify({
+                name: nombre,
+                email: correo,
+                role: rol,
+                loginTime: new Date().toISOString()
+            }));
+
+            alert('¡Cuenta creada con éxito! Redirigiendo al panel...');
+            
+            // Redirigir directamente a dashboard.html
+            window.location.href = 'dashboard.html';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos - Administración Vajillas y Chaskas</title>
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/auth-guard.js"></script>
+</head>
+<body class="bg-light">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Menú Lateral -->
+            <nav class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse text-white min-vh-100 p-3">
+                <h4 class="text-warning mb-4">🏺 Chaskas Admin</h4>
+                <ul class="nav flex-column gap-2">
+                    <li class="nav-item"><a href="dashboard.html" class="nav-link text-white">📊 Dashboard</a></li>
+                    <li class="nav-item"><a href="pedidos.html" class="nav-link text-white active bg-secondary rounded">📦 Pedidos</a></li>
+                    <li class="nav-item"><a href="productos.html" class="nav-link text-white">🫕 Productos</a></li>
+                    <li class="nav-item"><a href="usuarios.html" class="nav-link text-white">👥 Usuarios</a></li>
+                    <li class="nav-item mt-4">
+                        <button onclick="cerrarSesion()" class="btn btn-outline-danger btn-sm w-100">🚪 Cerrar Sesión</button>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Contenido Principal -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+                <div class="d-flex justify-content-between align-items-center pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Gestión de Pedidos y Detalles</h1>
+                    <button onclick="cerrarSesion()" class="btn btn-danger btn-sm">Salir</button>
+                </div>
+
+                <!-- Tabla de Pedidos Detallada -->
+                <div class="card border-0 shadow-sm p-3">
+                    <table class="table table-hover align-middle">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Cliente</th>
+                                <th>Producto Solicitado</th>
+                                <th>Detalles / Precio</th>
+                                <th>Fecha</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaPedidos">
+                            <!-- Los pedidos se cargarán dinámicamente aquí con todos sus detalles -->
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Script de Lógica para Pedidos con Detalles -->
+    <script>
+        const pedidosIniciales = [
+            { cliente: "Juan Pérez", producto: "Plato Llano Artesanal", precio: "45.00", fecha: "07/11/2026", estado: "Pendiente" }
+        ];
+
+        function cargarPedidos() {
+            let listaPedidos = JSON.parse(localStorage.getItem('listaPedidosAdmin'));
+            if (!listaPedidos) {
+                listaPedidos = pedidosIniciales;
+                localStorage.setItem('listaPedidosAdmin', JSON.stringify(listaPedidos));
+            }
+
+            const tabla = document.getElementById('tablaPedidos');
+            tabla.innerHTML = '';
+
+            listaPedidos.forEach((ped, index) => {
+                const fila = document.createElement('tr');
+                fila.innerHTML = `
+                    <td>
+                        <strong>${ped.cliente || "Cliente Tienda Web"}</strong>
+                    </td>
+                    <td>
+                        <span class="fw-bold text-dark">🏺 ${ped.producto}</span>
+                    </td>
+                    <td>
+                        <span class="text-success fw-bold">S/ ${parseFloat(ped.precio).toFixed(2)}</span>
+                        <br><small class="text-muted">Orden generada desde catálogo</small>
+                    </td>
+                    <td>${ped.fecha || new Date().toLocaleDateString()}</td>
+                    <td><span class="badge bg-warning text-dark">${ped.estado || 'Pendiente'}</span></td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-info me-1" onclick="verDetallePedido(${index})">Detalles</button>
+                        <button class="btn btn-sm btn-outline-danger" onclick="eliminarPedido(${index})">Eliminar</button>
+                    </td>
+                `;
+                tabla.appendChild(fila);
+            });
+        }
+
+        function verDetallePedido(index) {
+            let listaPedidos = JSON.parse(localStorage.getItem('listaPedidosAdmin'));
+            const p = listaPedidos[index];
+            alert(`📋 DETALLE DEL PEDIDO:\n\n- Cliente: ${p.cliente}\n- Producto: ${p.producto}\n- Precio: S/ ${p.precio}\n- Fecha: ${p.fecha}\n- Estado: ${p.estado}`);
+        }
+
+        function eliminarPedido(index) {
+            let listaPedidos = JSON.parse(localStorage.getItem('listaPedidosAdmin'));
+            if (confirm(`¿Estás seguro de eliminar este pedido?`)) {
+                listaPedidos.splice(index, 1);
+                localStorage.setItem('listaPedidosAdmin', JSON.stringify(listaPedidos));
+                cargarPedidos();
+            }
+        }
+
+        window.onload = cargarPedidos;
+    </script>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

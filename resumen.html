@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06 Resumen del pedido - Vajillas Artesanales</title>
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Estilos personalizados globales -->
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .bg-custom-navy { background-color: #0b1f33; }
+        .bg-custom-blue { background-color: #0d233a; }
+        .bg-custom-orange { background-color: #e06d29; }
+        .bg-custom-yellow { background-color: #f3b91a; }
+        .nav-link { color: #555 !important; font-size: 0.95rem; }
+        .nav-link:hover, .nav-link.active { color: #0d233a !important; font-weight: bold; }
+        .btn-custom-orange { background-color: #e06d29; color: white; }
+        .btn-custom-orange:hover { background-color: #c85a1b; color: white; }
+        .step-pill { font-size: 0.85rem; font-weight: 600; padding: 6px 14px; border-radius: 20px; }
+        .extra-small { font-size: 0.75rem; }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- Topbar Azul Oscuro Superior -->
+    <div class="bg-custom-navy text-white py-1 px-3 small d-flex justify-content-between align-items-center">
+        <div>
+            <span class="opacity-75">Taller de Colores y Creaciones · Piezas hechas con amor en Perú</span>
+        </div>
+        <div class="d-flex gap-3 extra-small">
+            <a href="talleres.html" class="text-white-50 text-decoration-none">Horarios y talleres de cerámica &rarr;</a>
+            <a href="contacto.html" class="text-white-50 text-decoration-none">Escríbenos &rarr;</a>
+        </div>
+    </div>
+
+    <!-- Barra de Navegación Superior -->
+    <header class="border-bottom py-2 bg-white sticky-top">
+        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+            <!-- Logo -->
+            <a href="Index.html" class="d-flex align-items-center mb-2 mb-md-0 text-decoration-none">
+                <span class="fs-4 text-warning me-2">🏺</span>
+                <span class="fw-bold fs-5 text-dark">Vajillas y Chaskas</span>
+            </a>
+            <!-- Buscador -->
+            <div class="input-group w-50 w-md-25 mb-2 mb-md-0" style="max-width: 300px;">
+                <input type="text" class="form-control form-control-sm" placeholder="Buscar vajillas o juegos...">
+            </div>
+            <!-- Acciones -->
+            <div>
+                <a href="admin/login.html" class="btn btn-outline-dark btn-sm">Mi cuenta</a>
+            </div>
+        </div>
+        <!-- Menú de Enlaces Vinculados (Destacado en Resumen) -->
+        <div class="container mt-2">
+            <ul class="nav justify-content-center justify-content-lg-start border-top pt-2 flex-nowrap overflow-auto">
+                <li class="nav-item"><a class="nav-link" href="Index.html">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo por uso</a></li>
+                <li class="nav-item"><a class="nav-link" href="juegos.html">Juegos de vajilla</a></li>
+                <li class="nav-item"><a class="nav-link" href="detalle.html">Detalle</a></li>
+                <li class="nav-item"><a class="nav-link" href="personalizar.html">Personalizar</a></li>
+                <li class="nav-item"><a class="nav-link active border-bottom border-warning border-3 pb-1" href="resumen.html">Resumen</a></li>
+                <li class="nav-item"><a class="nav-link" href="envio.html">Envío</a></li>
+                <li class="nav-item"><a class="nav-link" href="materiales.html">Materiales</a></li>
+                <li class="nav-item"><a class="nav-link" href="talleres.html">Talleres</a></li>
+                <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Sección Resumen del Pedido -->
+    <section class="container my-4">
+        <span class="text-muted small text-uppercase">06 Resumen del pedido</span>
+        <h1 class="display-6 fw-bold text-dark mt-1">Tu próxima mesa empieza aquí.</h1>
+        <p class="text-muted">Revisa los artículos seleccionados, verifica cantidades y procede con el envío.</p>
+
+        <!-- Pasos de Compra -->
+        <div class="d-flex justify-content-between border-bottom pb-3 mb-4 text-center">
+            <span class="step-pill bg-dark text-white">1. Revisión de pedido</span>
+            <span class="step-pill bg-light text-muted"><a href="envio.html" class="text-decoration-none text-muted">2. Recojo y envío</a></span>
+            <span class="step-pill bg-light text-muted">3. Confirmación y pago</span>
+        </div>
+
+        <div class="row g-4">
+            <!-- Columna Izquierda: Lista de Productos en el Pedido -->
+            <div class="col-lg-8">
+                <div class="bg-custom-yellow p-2 rounded mb-3 d-flex justify-content-between align-items-center">
+                    <h6 class="fw-bold mb-0 text-dark">Tus piezas elegidas</h6>
+                    <span class="small text-dark fw-semibold">Precio unitario · Subtotal</span>
+                </div>
+
+                <!-- Producto 1 -->
+                <div class="card border-0 shadow-sm mb-3">
+                    <div class="card-body d-flex align-items-center justify-content-between flex-wrap gap-3">
+                        <div class="d-flex align-items-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&w=200&q=80" class="rounded object-fit-cover" style="width: 70px; height: 70px;" alt="Plato Llano">
+                            <div>
+                                <span class="text-muted extra-small d-uppercase">Cerámica</span>
+                                <h6 class="fw-bold mb-1">Plato Llano</h6>
+                                <p class="text-muted small mb-0">Esmalte terracota mate (26 cm)</p>
+                                <span class="text-success small">✔ Stock disponible</span>
+                            </div>
+                        </div>
+                        <div class="text-end">
+                            <span class="text-muted small d-block">S/ 45</span>
+                            <span class="fw-bold text-dark">S/ 45</span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-white border-top-0 pt-0 pb-2 px-3">
+                        <button class="btn btn-outline-secondary btn-sm extra-small">Editar opción &orarr;</button>
+                    </div>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="card border-0 shadow-sm mb-3">
+                    <div class="card-body d-flex align-items-center justify-content-between flex-wrap gap-3">
+                        <div class="d-flex align-items-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=200&q=80" class="rounded object-fit-cover" style="width: 70px; height: 70px;" alt="Juego Demostración">
+                            <div>
+                                <span class="text-muted extra-small d-uppercase">Sets y vajillas</span>
+                                <h6 class="fw-bold mb-1">Juego Demostración</h6>
+                                <p class="text-muted small mb-0">Set de piezas armadas de 12 piezas (Azul cobalto)</p>
+                                <span class="text-success small">✔ Stock disponible</span>
+                            </div>
+                        </div>
+                        <div class="text-end">
+                            <span class="text-muted small d-block">S/ 540</span>
+                            <span class="fw-bold text-dark">S/ 540</span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-white border-top-0 pt-0 pb-2 px-3">
+                        <button class="btn btn-outline-secondary btn-sm extra-small">Editar opción &orarr;</button>
+                    </div>
+                </div>
+
+                <!-- Producto 3 -->
+                <div class="card border-0 shadow-sm mb-3">
+                    <div class="card-body d-flex align-items-center justify-content-between flex-wrap gap-3">
+                        <div class="d-flex align-items-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=200&q=80" class="rounded object-fit-cover" style="width: 70px; height: 70px;" alt="Plato personalizado">
+                            <div>
+                                <span class="text-muted extra-small d-uppercase">A medida</span>
+                                <h6 class="fw-bold mb-1">Plato personalizado</h6>
+                                <p class="text-muted small mb-0">Grabado en láser y esmalte a medida</p>
+                                <span class="text-muted small">Bajo pedido exclusivo</span>
+                            </div>
+                        </div>
+                        <div class="text-end">
+                            <span class="text-muted small d-block">S/ 255</span>
+                            <span class="fw-bold text-dark">S/ 255</span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-white border-top-0 pt-0 pb-2 px-3">
+                        <button class="btn btn-outline-secondary btn-sm extra-small">Editar opción &orarr;</button>
+                    </div>
+                </div>
+
+                <div class="text-muted extra-small mt-2">
+                    * Verificación formal de stock.
+                </div>
+            </div>
+
+            <!-- Columna Derecha: Resumen de Costos y Siguiente Paso -->
+            <div class="col-lg-4">
+                <div class="bg-custom-yellow p-4 rounded shadow-sm mb-4">
+                    <h5 class="fw-bold text-dark mb-3">Tu pedido en números</h5>
+                    
+                    <div class="d-flex justify-content-between small border-bottom border-dark border-opacity-15 py-2">
+                        <span class="text-secondary">Productos (3 artículos):</span>
+                        <strong class="text-dark">S/ 840</strong>
+                    </div>
+                    <div class="d-flex justify-content-between small border-bottom border-dark border-opacity-15 py-2">
+                        <span class="text-secondary">Empaque protector:</span>
+                        <strong class="text-dark">S/ 0.00</strong>
+                    </div>
+                    <div class="d-flex justify-content-between small border-bottom border-dark border-opacity-15 py-2">
+                        <span class="text-secondary">Envío estimado:</span>
+                        <strong class="text-dark">S/ 0.00</strong>
+                    </div>
+                    <div class="d-flex justify-content-between py-3">
+                        <span class="fw-bold text-dark fs-5">Monto total:</span>
+                        <strong class="text-dark fs-4">S/ 840</strong>
+                    </div>
+
+                    <p class="small text-secondary mb-3" style="font-size: 0.8rem;">
+                        Recuerda que los precios incluyen impuestos locales y embalaje especial anti-golpes para su transporte.
+                    </p>
+
+                    <a href="envio.html" class="btn btn-custom-orange w-100 fw-bold py-2 shadow-sm text-decoration-none text-white text-center">Proceder al envío &rarr;</a>
+
+                    <div class="border border-warning rounded p-2 mt-3 bg-white">
+                        <span class="fw-bold small text-dark d-block mb-1">¿Qué sigue a continuación?</span>
+                        <ul class="extra-small text-muted ps-3 mb-0">
+                            <li>1. Selección de dirección</li>
+                            <li>2. Tipo de recojo o despacho</li>
+                            <li>3. Confirmación de pago seguro</li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-3 text-center">
+                        <a href="contacto.html" class="text-dark extra-small text-decoration-none fw-bold">¿Tienes dudas con el pedido? &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Banner Inferior Verde -->
+        <div class="bg-success text-white p-4 rounded mt-5 d-flex flex-column flex-md-row justify-content-between align-items-center shadow-sm">
+            <div class="mb-3 mb-md-0">
+                <h4 class="fw-bold mb-1">Cada pedido, una conversación.</h4>
+                <p class="small mb-0 opacity-75">Coordinamos contigo el detalle exacto de tus piezas antes de la fabricación y el despacho final.</p>
+            </div>
+            <a href="contacto.html" class="btn btn-light text-success fw-bold px-4 py-2 text-decoration-none">Soporte directo</a>
+        </div>
+    </section>
+
+    <!-- Pie de Página (Footer azul oscuro) -->
+    <footer class="bg-custom-blue text-white py-5 mt-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="d-flex align-items-center mb-2">
+                        <span class="fs-4 text-warning me-2">🏺</span>
+                        <h5 class="fw-bold mb-0">Colores y Creaciones</h5>
+                    </div>
+                    <p class="text-white-50 small">Rincón de piezas artesanales hechas a mano con dedicación en cada detalle para compartir en tu hogar.</p>
+                    <a href="contacto.html" class="text-warning extra-small text-decoration-none">¿Dudas? Escríbenos directamente &rarr;</a>
+                </div>
+                <div class="col-md-2">
+                    <h6 class="fw-bold text-warning small mb-3">Atención al taller</h6>
+                    <ul class="list-unstyled extra-small">
+                        <li class="mb-1"><a href="contacto.html" class="text-white-50 text-decoration-none">Sobre el taller</a></li>
+                        <li class="mb-1"><a href="catalogo.html" class="text-white-50 text-decoration-none">Catálogo por uso</a></li>
+                        <li class="mb-1"><a href="juegos.html" class="text-white-50 text-decoration-none">Juegos y vajillas</a></li>
+                        <li class="mb-1"><a href="personalizar.html" class="text-white-50 text-decoration-none">Personalización</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="fw-bold text-warning small mb-3">Estudio de cerámica</h6>
+                    <ul class="list-unstyled extra-small">
+                        <li class="mb-1"><a href="materiales.html" class="text-white-50 text-decoration-none">Talleres y clases &rarr;</a></li>
+                        <li class="mb-1"><a href="talleres.html" class="text-white-50 text-decoration-none">Visitas guiadas</a></li>
+                        <li class="mb-1"><a href="materiales.html" class="text-white-50 text-decoration-none">Materiales de arcilla</a></li>
+                        <li class="mb-1"><a href="contacto.html" class="text-white-50 text-decoration-none">Preguntas frecuentes</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="fw-bold text-warning small mb-3">Atención de fichas</h6>
+                    <ul class="list-unstyled extra-small text-white-50">
+                        <li class="mb-1">📍 Ubicación por confirmar en Perú</li>
+                        <li class="mb-1">💬 WhatsApp: +51 987 654 321</li>
+                        <li class="mb-1">✉️ Correo: T. Chaskas &rarr;</li>
+                        <li class="mt-2"><a href="admin/login.html" class="btn btn-outline-warning btn-sm extra-small">Acceso Admin</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-top border-secondary mt-4 pt-3 d-flex justify-content-between flex-wrap extra-small text-white-50">
+                <p class="mb-0">&copy; 2026 Colores y Creaciones - Todos los derechos reservados.</p>
+                <p class="mb-0">Versión 06 · Resumen del Pedido</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Script principal de lógica compartida -->
+    <script src="js/main.js"></script>
+</body>
+</html>
