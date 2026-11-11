@@ -54,8 +54,15 @@
         </div>
     </div>
 
-    <!-- Script de Lógica para Pedidos con Detalles -->
+    <!-- Script de Lógica para Pedidos con Detalles y Sesión -->
     <script>
+        // Función para cerrar sesión de forma segura
+        function cerrarSesion() {
+            localStorage.removeItem('adminLogueado');
+            localStorage.removeItem('usuarioActivo');
+            window.location.href = 'login.html';
+        }
+
         const pedidosIniciales = [
             { cliente: "Juan Pérez", producto: "Plato Llano Artesanal", precio: "45.00", fecha: "07/11/2026", estado: "Pendiente" }
         ];
@@ -97,7 +104,7 @@
         function verDetallePedido(index) {
             let listaPedidos = JSON.parse(localStorage.getItem('listaPedidosAdmin'));
             const p = listaPedidos[index];
-            alert(`📋 DETALLE DEL PEDIDO:\n\n- Cliente: ${p.cliente}\n- Producto: ${p.producto}\n- Precio: S/ ${p.precio}\n- Fecha: ${p.fecha}\n- Estado: ${p.estado}`);
+            alert(`📋 DETALLE DEL PEDIDO:\n\nCliente: ${p.cliente}\nProducto: ${p.producto}\nPrecio: S/ ${p.precio}\nFecha: ${p.fecha}\nEstado: ${p.estado}`);
         }
 
         function eliminarPedido(index) {

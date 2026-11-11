@@ -96,8 +96,15 @@
         </div>
     </div>
 
-    <!-- Script de Lógica para Productos y LocalStorage -->
+    <!-- Script de Lógica para Sesión, Productos y LocalStorage -->
     <script>
+        // Función para cerrar sesión de forma segura
+        function cerrarSesion() {
+            localStorage.removeItem('adminLogueado');
+            localStorage.removeItem('usuarioActivo');
+            window.location.href = 'login.html';
+        }
+
         const productosIniciales = [
             { nombre: "Plato Llano Artesanal", categoria: "Vajilla Unitaria", precio: "45.00", stock: 15 },
             { nombre: "Juego Dúo Azul Cobalto", categoria: "Juegos", precio: "240.00", stock: 8 }

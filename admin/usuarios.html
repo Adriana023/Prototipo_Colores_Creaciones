@@ -90,6 +90,13 @@
 
     <!-- Script para Guardar y Cargar desde localStorage -->
     <script>
+        // Función para cerrar sesión de forma segura
+        function cerrarSesion() {
+            localStorage.removeItem('adminLogueado');
+            localStorage.removeItem('usuarioActivo');
+            window.location.href = 'login.html';
+        }
+
         // Usuarios iniciales por defecto si no hay nada guardado
         const usuariosIniciales = [
             { nombre: "Administrador Principal", correo: "admin@vajillas.com", rol: "Administrador" },
