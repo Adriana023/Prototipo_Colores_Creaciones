@@ -8,8 +8,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Hoja de estilos personalizada -->
     <link rel="stylesheet" href="css/styles.css">
+    <!-- Herramientas de accesibilidad exclusivas de la página de inicio -->
+    <link rel="stylesheet" href="css/accesibilidad.css">
 </head>
 <body class="bg-white">
+    <div class="a11y-page">
 
     <!-- Barra de Navegación Superior -->
     <header class="border-bottom py-2 bg-white sticky-top">
@@ -160,6 +163,108 @@
             </div>
         </div>
     </footer>
+    </div>
+
+    <div class="a11y-widget">
+        <button class="a11y-trigger" id="a11y-trigger" type="button"
+                aria-label="Abrir herramientas de accesibilidad"
+                aria-expanded="false" aria-controls="a11y-panel">
+            <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false">
+                <circle cx="12" cy="4" r="2"></circle>
+                <path d="M4 8h16M12 6v7m0 0-5 7m5-7 5 7M7 8l2 5h6l2-5"></path>
+            </svg>
+        </button>
+
+        <section class="a11y-panel" id="a11y-panel" aria-labelledby="a11y-title" hidden>
+            <div class="a11y-panel-header">
+                <div>
+                    <p class="a11y-eyebrow">Colores y Creaciones</p>
+                    <h2 id="a11y-title">Accesibilidad</h2>
+                </div>
+                <button class="a11y-close" id="a11y-close" type="button" aria-label="Cerrar herramientas de accesibilidad">
+                    <span aria-hidden="true">&times;</span>
+                </button>   
+            </div>
+
+            <div class="a11y-panel-content">
+                <fieldset class="a11y-group">
+                    <legend>Visión del color</legend>
+                    <p class="a11y-help">Filtros orientativos de simulación; no sustituyen ajustes de diseño.</p>
+                    <div class="a11y-button-row">
+                        <button class="a11y-option" type="button" data-color="normal" aria-pressed="true">Normal</button>
+                        <button class="a11y-option" type="button" data-color="protanopia" aria-pressed="false">Protanopia</button>
+                        <button class="a11y-option" type="button" data-color="deuteranopia" aria-pressed="false">Deuteranopia</button>
+                        <button class="a11y-option" type="button" data-color="tritanopia" aria-pressed="false">Tritanopia</button>
+                    </div>
+                </fieldset>
+
+                <fieldset class="a11y-group">
+                    <legend>Contraste</legend>
+                    <div class="a11y-button-row">
+                        <button class="a11y-option" type="button" data-contrast="normal" aria-pressed="true">Normal</button>
+                        <button class="a11y-option" type="button" data-contrast="high" aria-pressed="false">Alto</button>
+                        <button class="a11y-option" type="button" data-contrast="dark" aria-pressed="false">Oscuro</button>
+                        <button class="a11y-option" type="button" data-contrast="enhanced" aria-pressed="false">Mejorado</button>
+                    </div>
+                </fieldset>
+
+                <fieldset class="a11y-group">
+                    <legend>Tamaño del texto</legend>
+                    <div class="a11y-control-row">
+                        <button class="a11y-control" id="a11y-font-down" type="button" aria-label="Disminuir tamaño del texto">A−</button>
+                        <output class="a11y-value" id="a11y-font-value" aria-live="polite">100 %</output>
+                        <button class="a11y-control" id="a11y-font-up" type="button" aria-label="Aumentar tamaño del texto">A+</button>
+                        <button class="a11y-option" id="a11y-font-reset" type="button">Restablecer</button>
+                    </div>
+                </fieldset>
+
+                <fieldset class="a11y-group">
+                    <legend>Ampliación de página</legend>
+                    <div class="a11y-control-row">
+                        <button class="a11y-control" id="a11y-zoom-down" type="button" aria-label="Reducir ampliación">−</button>
+                        <output class="a11y-value" id="a11y-zoom-value" aria-live="polite">100 %</output>
+                        <button class="a11y-control" id="a11y-zoom-up" type="button" aria-label="Ampliar contenido">+</button>
+                    </div>
+                </fieldset>
+
+                <fieldset class="a11y-group">
+                    <legend>Lectura y enfoque</legend>
+                    <div class="a11y-button-row">
+                        <button class="a11y-option" type="button" data-toggle="dyslexia" aria-pressed="false">Lectura fácil</button>
+                        <button class="a11y-option" type="button" data-toggle="focus" aria-pressed="false">Concentración</button>
+                        <button class="a11y-option" type="button" data-toggle="cursor" aria-pressed="false">Cursor grande</button>
+                    </div>
+                </fieldset>
+
+                <fieldset class="a11y-group a11y-speech">
+                    <legend>Lectura en voz alta</legend>
+                    <div class="a11y-button-row">
+                        <button class="a11y-option" id="a11y-speak" type="button">Iniciar</button>
+                        <button class="a11y-option" id="a11y-pause" type="button" disabled>Pausar</button>
+                        <button class="a11y-option" id="a11y-resume" type="button" disabled>Reanudar</button>
+                        <button class="a11y-option" id="a11y-stop" type="button" disabled>Detener</button>
+                    </div>
+                    <p class="a11y-status" id="a11y-speech-status" role="status" aria-live="polite">Lee el contenido de esta página en español.</p>
+                </fieldset>
+
+                <button class="a11y-reset" id="a11y-reset" type="button">Restablecer todas las opciones</button>
+                <p class="a11y-status" id="a11y-preference-status" role="status" aria-live="polite"></p>
+                <p class="a11y-disclaimer">Los ajustes visuales se guardan en este navegador y se aplican al recorrer el sitio. La narración se inicia manualmente y se detiene al navegar. Este panel no certifica por sí solo el cumplimiento WCAG del sitio.</p>
+            </div>
+        </section>
+
+        <svg class="a11y-filters" aria-hidden="true" focusable="false">
+            <filter id="a11y-protanopia">
+                <feColorMatrix type="matrix" values="0.567 0.433 0 0 0  0.558 0.442 0 0 0  0 0.242 0.758 0 0  0 0 0 1 0"></feColorMatrix>
+            </filter>
+            <filter id="a11y-deuteranopia">
+                <feColorMatrix type="matrix" values="0.625 0.375 0 0 0  0.700 0.300 0 0 0  0 0.300 0.700 0 0  0 0 0 1 0"></feColorMatrix>
+            </filter>
+            <filter id="a11y-tritanopia">
+                <feColorMatrix type="matrix" values="0.950 0.050 0 0 0  0 0.433 0.567 0 0  0 0.475 0.525 0 0  0 0 0 1 0"></feColorMatrix>
+            </filter>
+        </svg>
+    </div>
 
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -173,5 +278,7 @@
             cargarProductosTienda('gridProductosIndex');
         };
     </script>
+    <script src="js/accesibilidad-compartida.js"></script>
+    <script src="js/accesibilidad.js"></script>
 </body>
 </html>
